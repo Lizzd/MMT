@@ -1,0 +1,6 @@
+/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/CMakeFiles/test_Chai3d_Virtual_Environment_Server.dir
+/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/Udp_comm/CMakeFiles/udp_communication.dir
+/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/Udp_comm/CMakeFiles/edit_cache.dir
+/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/Udp_comm/CMakeFiles/rebuild_cache.dir
