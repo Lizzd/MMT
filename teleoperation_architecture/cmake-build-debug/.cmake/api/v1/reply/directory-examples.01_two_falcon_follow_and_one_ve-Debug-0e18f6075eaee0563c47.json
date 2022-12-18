@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "examples/01_two_falcon_follow_and_one_ve",
+		"source" : "examples/01_two_falcon_follow_and_one_ve"
+	}
+}

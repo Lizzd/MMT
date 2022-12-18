@@ -1,0 +1,2 @@
+/usr/bin/ar qc librobot_lib.a CMakeFiles/robot_lib.dir/Control/PID/PIDController.cpp.o CMakeFiles/robot_lib.dir/RobotAdaptor/Force_dimension_robot/Falcon_robot_fd.cpp.o
+/usr/bin/ranlib librobot_lib.a

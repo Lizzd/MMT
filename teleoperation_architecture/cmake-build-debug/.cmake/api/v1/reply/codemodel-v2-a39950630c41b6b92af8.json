@@ -1,0 +1,149 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "Udp_comm",
+					"jsonFile" : "directory-Udp_comm-Debug-1403c3a74eb5daceae1e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Udp_comm",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "Robotics",
+					"jsonFile" : "directory-Robotics-Debug-ac1ed839ae133bb18d58.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Robotics",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "examples/01_two_falcon_follow_and_one_ve",
+					"jsonFile" : "directory-examples.01_two_falcon_follow_and_one_ve-Debug-0e18f6075eaee0563c47.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "examples/01_two_falcon_follow_and_one_ve",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "Teleoperation_architecture_AhtalKa",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "01_two_falcon_follow_and_one_ve",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "01_main_robot::@cf16cb5cfdc1f5e6c81d",
+					"jsonFile" : "target-01_main_robot-Debug-e1221fd5c9957cbf6ce4.json",
+					"name" : "01_main_robot",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "01_secondary_robot::@cf16cb5cfdc1f5e6c81d",
+					"jsonFile" : "target-01_secondary_robot-Debug-9c3e5f4350c8e7c38980.json",
+					"name" : "01_secondary_robot",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "robot_lib::@6705a0da25646f69dd70",
+					"jsonFile" : "target-robot_lib-Debug-226daff8a6632f09a1c3.json",
+					"name" : "robot_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "udp_communication::@2c5782f92dab26d68d12",
+					"jsonFile" : "target-udp_communication-Debug-873a99e3b2dc3f91b5d7.json",
+					"name" : "udp_communication",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/li/internet/teleoperation_architecture/cmake-build-debug",
+		"source" : "/home/li/internet/teleoperation_architecture"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

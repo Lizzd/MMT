@@ -1,0 +1,6 @@
+/snap/clion/209/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/li/internet/teleoperation_architecture -B /home/li/internet/teleoperation_architecture/cmake-build-debug
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0")  
+-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/li/internet/teleoperation_architecture/cmake-build-debug
