@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(test_Chai3d_Virtual_Environment_Server)
+project(test_Chai3d_Virtual_Environment_local)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -13,6 +13,7 @@ find_package(Boost REQUIRED)
 find_package(Boost COMPONENTS system REQUIRED)
 
 if(CHAI3D_FOUND)
+#    message(STATUS "CHAI3D DIR:${CHAI3D-ODE_INCLUDE_DIRS}")
     message(STATUS "Found CHAI3D: ${CHAI3D_SOURCE_DIR}")
 endif()
 

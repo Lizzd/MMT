@@ -1,4 +1,4 @@
-# Install script for directory: /home/li/internet/chai3d_virtual_env_local
+# Install script for directory: /home/li/internet/MMT/chai3d_virtual_env_local
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,7 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/Udp_comm/cmake_install.cmake")
+  include("/home/li/internet/MMT/chai3d_virtual_env_local/cmake-build-debug/Udp_comm/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/li/internet/chai3d_virtual_env_local/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/li/internet/MMT/chai3d_virtual_env_local/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

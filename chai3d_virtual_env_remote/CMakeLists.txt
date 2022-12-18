@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(test_Chai3d_Virtual_Environment_Server)
+project(test_Chai3d_Virtual_Environment_remote)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -24,12 +24,14 @@ endif()
 
 set(CHAI3D_VERSION 3.2.0)
 set(CHAI3D_PATH /home/li/internet/chai3d-3.2.0)
+SET(MY_TOOlS
+        ${CMAKE_SOURCE_DIR}/Tools/StringTools/String_tools.cpp)
 
 add_subdirectory(Udp_comm)
 
 link_directories(${CHAI3D_LIBRARY_DIRS})
 
-add_executable(test_Chai3d_Virtual_Environment_Server main.cpp)
+add_executable(test_Chai3d_Virtual_Environment_Server main.cpp ${MY_TOOLS})
 
 target_include_directories(test_Chai3d_Virtual_Environment_Server PRIVATE ${CHAI3D_INCLUDE_DIRS} ${CHAI3D-ODE_INCLUDE_DIRS}
         ${CHAI3D_PATH}/modules/ODE/src

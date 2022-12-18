@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "Udp_comm",
+					"jsonFile" : "directory-Udp_comm-Debug-1403c3a74eb5daceae1e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Udp_comm",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "test_Chai3d_Virtual_Environment_local",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "test_Chai3d_Virtual_Environment_Server::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_Chai3d_Virtual_Environment_Server-Debug-32e49f345ba363ded3df.json",
+					"name" : "test_Chai3d_Virtual_Environment_Server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "udp_communication::@2c5782f92dab26d68d12",
+					"jsonFile" : "target-udp_communication-Debug-77265fec92867eeaee34.json",
+					"name" : "udp_communication",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/li/internet/MMT/chai3d_virtual_env_local/cmake-build-debug",
+		"source" : "/home/li/internet/MMT/chai3d_virtual_env_local"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
