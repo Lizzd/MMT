@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.2.4/bin/ninja/win/ninja.exe" -G Ninja -S D:\VE\teleoperation_architecture -B D:\VE\teleoperation_architecture\cmake-build-debug
+"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\VE\chai3d_virtual_env_local -B D:\VE\chai3d_virtual_env_local\cmake-build-debug
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
@@ -11,13 +11,14 @@
 -- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2022.2.4/bin/mingw/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE) 
 CMake Error at C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
-  Could NOT find Boost (missing: Boost_INCLUDE_DIR)
+  Could NOT find GLUT (missing: GLUT_glut_LIBRARY GLUT_INCLUDE_DIR)
 Call Stack (most recent call first):
   C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/FindPackageHandleStandardArgs.cmake:594 (_FPHSA_FAILURE_MESSAGE)
-  C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/FindBoost.cmake:2376 (find_package_handle_standard_args)
-  Udp_comm/CMakeLists.txt:1 (find_package)
+  C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/share/cmake-3.23/Modules/FindGLUT.cmake:197 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  CMakeLists.txt:9 (find_package)
 
 
 -- Configuring incomplete, errors occurred!
-See also "D:/VE/teleoperation_architecture/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "D:/VE/chai3d_virtual_env_local/cmake-build-debug/CMakeFiles/CMakeOutput.log".

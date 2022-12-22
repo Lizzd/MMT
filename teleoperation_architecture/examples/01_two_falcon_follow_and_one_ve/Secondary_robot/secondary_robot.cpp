@@ -12,7 +12,7 @@
 
 #include <chrono>
 
-int main(){
+int main(int argc, char* argv[]){
     shared_ptr<I_Robot> client_falcon_robot_ptr= std::make_shared<Falcon_robot_fd>();
 
     bool init_successful_flag=false;
@@ -33,17 +33,17 @@ int main(){
 
     std::cout<<"starting test client..."<<endl;
     Udp_client my_client(12344,"127.0.0.1",12345);// remote virtual env
-    Udp_client ve_client(19997,"127.0.0.1",12306); // should different with local
+    Udp_client ve_client(19997,"127.0.0.1",std::stoi(argv[1])); // should different with local
     while(!my_client.is_init_done()||!ve_client.is_init_done())
     {
         this_thread::sleep_for(chrono::milliseconds(1));
     }
     Eigen::Vector3d shared_target_position(0.0,0.0,0.0);
-    thread message_reading_thread([&my_client,&shared_target_position,&is_simulation_running] {
+    thread message_reading_thread([&ve_client,&my_client,&shared_target_position,&is_simulation_running] {
         cout << "[client] starting haptic rendering thread..." << endl;
         while (is_simulation_running) {
             string msg;
-            if (my_client.get_one_msg(msg)) {
+            if (ve_client.get_one_msg(msg)) {
                 //currently, the rcv_data is like the following
                 //e.g.
                 //seq:100\n

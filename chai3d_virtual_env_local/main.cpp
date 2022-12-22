@@ -319,6 +319,9 @@ propagated to the ODE representation.
 
 int main(int argc, char* argv[])
 {
+//    auto a = argv[1];
+//    cout<<"a"<<a<<endl;
+//    return 0 ;
     //-----------------------------------------------------------------------
     // INITIALIZATION
     //-----------------------------------------------------------------------
@@ -459,7 +462,8 @@ int main(int argc, char* argv[])
     simulationRunning = true;
 
     // create thread for haptic rendering and virtual env. server
-    Udp_server my_server(12306);
+
+    Udp_server my_server(std::stoi(argv[1]));
 
     thread udpServerThread(UDPServerThread,std::ref(my_server),std::ref(simulationRunning));
     udpServerThread.detach();
@@ -749,7 +753,7 @@ void updateHaptics(Udp_server &my_server, bool &is_simulation_running)
 
                 //update position on y axis
                 pos_y= cClamp(pos_y-pushing_friction_k*timeInterval*pushing_force,-0.5,0.5);
-//                cout<<"CubeCenter:"<<pos_y<<endl;
+//                cout<<"CubeCenter:"<<CubeCenter.y() <<endl;
 
                 box->setLocalPos(CubeCenter.x() ,pos_y,CubeCenter.z());
 
@@ -767,12 +771,13 @@ void updateHaptics(Udp_server &my_server, bool &is_simulation_running)
                 if (cClient->isRemote == true){
 
                     // assemble msg
-
+//                    cout<<"fale"<<endl;
                     ostringstream msg;
                     msg<<"seq:"<<seq<<"\n";
                     msg<<"timestamp:"<<cClient->time_stamp<<"\n";
-                    msg<<"position"<<cClient->Position.x()<<","<<cClient->Position.y()<<","<<cClient->Position.z()<<"\n";
-
+//                    cout<<"time step"<<cClient->time_stamp<<endl;
+                    msg<<"position:"<<cClient->Position.x()<<","<<cClient->Position.y()<<","<<cClient->Position.z()<<"\n";
+//                    cout<<"transmission position"<<cClient->Position.x()<<","<<cClient->Position.y()<<","<<cClient->Position.z()<<endl;
                     // add the msg to the server sending request queue
                     my_server.add_snd_request_to_one_client(Endpoint_info_and_msg(cClient->answer_endpoint,msg.str()));
 
@@ -953,10 +958,12 @@ void UDPServerThread(Udp_server &my_server,bool &is_simulation_running) {
                     if (modelparasize ==0) {
                         cVector3d newPosition(stod(data[0]), stod(data[1]), stod(data[2]));
                         curClient->Position = newPosition;
+//                        cout<<"modelsize =0 situation:"<<curClient->Position<<endl;
                         LeaderPos = newPosition;
                     }
                     else{
                         curClient->Position = LeaderPos;
+                        cout<<"modelsize =!0 situation:"<<curClient->Position<<endl;
                         size_t pos1 = 0;
                         vector<string> MP;
                         if ((pos1 = modelpara.find(':')) != string::npos) {

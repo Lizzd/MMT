@@ -12,7 +12,10 @@
 
 #include <chrono>
 
-int main(){
+int main(int argc, char* argv[]){
+//    auto a = argv[1];
+//    cout<<"a"<<a<<endl;
+//    return 0 ;
     // main robot side
     // need both client and server
     shared_ptr<I_Robot> server_falcon_robot_ptr= std::make_shared<Falcon_robot_fd>();
@@ -36,7 +39,7 @@ int main(){
 
     Udp_server my_server(12345);
 //    Udp_client main_robot_ve_client(19991,"192.168.1.122",12306);
-    Udp_client main_robot_ve_client(19991,"127.0.0.1",12306);
+    Udp_client main_robot_ve_client(19991,"127.0.0.1",std::stoi(argv[1]));
     Eigen::Vector3d target_reaction_force(0.0,0.0,0.0);
     thread read_ve_force_thread([&main_robot_ve_client,&is_simulation_running,&target_reaction_force]{
         cout<<"starting haptic rendering thread..."<<endl;
@@ -122,7 +125,7 @@ int main(){
             msg << "seq:" << seq << "\n";
             msg << "timestamp:" << timestamp << "\n";
             msg << "data:" << currentPosition.x() << "," << currentPosition.y() << "," << currentPosition.z() << "\n";
-
+            cout<<"transmission:"<<currentPosition.x() << "," << currentPosition.y() << "," << currentPosition.z()<<"\n"<<endl;
 //            my_server.add_snd_request_to_all_client(msg.str());
             main_robot_ve_client.add_snd_request(msg.str());
             this_thread::yield();

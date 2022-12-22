@@ -326,7 +326,9 @@ int main(int argc, char *argv[]) {
     //-----------------------------------------------------------------------
     // INITIALIZATION
     //-----------------------------------------------------------------------
-
+//    auto a = argv[2];
+//    cout<<"a"<<a<<endl;
+//    return 0 ;
     printf("\n");
     printf("-----------------------------------\n");
     printf("CHAI 3D\n");
@@ -462,14 +464,16 @@ int main(int argc, char *argv[]) {
     simulationRunning = true;
 
     // create thread for haptic rendering and virtual env. server
-    Udp_server my_server(12306);
+    Udp_server my_server(std::stoi(argv[1]));
 
-    Udp_client local_ve_client(19991,"127.0.0.1",12306);
+    Udp_client local_ve_client(19992,"127.0.0.1",std::stoi(argv[2]));
+//    Udp_client local_ve_client(19991,"192.168.12.129",std::stoi(argv[1]));
 
-    cVector3d target_position(0.0,1.0,0.0);
+
+    cVector3d target_position(0.0,0.0,0.0);
     thread read_ve_position_thread(read_ve_position,std::ref(local_ve_client),std::ref(target_position),std::ref(simulationRunning));
     read_ve_position_thread.detach();
-
+//
     thread send_model_thread(send_modelPara,std::ref(local_ve_client),std::ref(simulationRunning) );
     send_model_thread.detach();
 
@@ -774,16 +778,16 @@ void updateHaptics(Udp_server &my_server, cVector3d& target_position,bool &is_si
 
             if (transmit) {
 
-                    ostringstream msg;
-                    msg << "seq:" << seq << "\n";
-                    msg << "timestamp:" << cClient->time_stamp << "\n";
+                ostringstream msg;
+                msg << "seq:" << seq << "\n";
+                msg << "timestamp:" << cClient->time_stamp << "\n";
 //                    msg << "force:" << cClient->Force.x() << "," << cClient->Force.y() << "," << cClient->Force.z()
-                    msg << "targetposition:" << target_position.x() << "," << target_position.y() << "," << target_position.z()
-                        << "\n";
+                msg << "targetposition:" << target_position.x() << "," << target_position.y() << "," << target_position.z()
+                    << "\n";
 
-                    // add the msg to the server sending request queue
-                    my_server.add_snd_request_to_one_client(Endpoint_info_and_msg(cClient->answer_endpoint, msg.str()));
-                }
+                // add the msg to the server sending request queue
+                my_server.add_snd_request_to_one_client(Endpoint_info_and_msg(cClient->answer_endpoint, msg.str()));
+            }
 
 
 
@@ -953,48 +957,42 @@ void UDPServerThread(Udp_server &my_server, bool &is_simulation_running) {
 ////////////////////////////////////////////  END: Thread Tasks //////////////////////////////////////////////////////////////
 
 void read_ve_position(Udp_client& local_ve_client,cVector3d& target_reaction_position,bool& simulationRunning){
-    cout<<"starting haptic rendering thread..."<<endl;
+    cout<<"starting read ve position thread..."<<endl;
     while(simulationRunning){
-
+//
         string tmp;
         if(local_ve_client.get_one_msg(tmp))
         {
-            try{
-                //cout<<"[test]"<<tmp<<endl;
-                vector<string> tokens;
-                String_tools::string_split(tmp,tokens,"\n");
-                string dataline=tokens[2];
+//            try{
+            //cout<<"[test]"<<tmp<<endl;
+            vector<string> tokens;
+            String_tools::string_split(tmp,tokens,"\n");
+            string dataline=tokens[2];
+//                cout<<dataline<<endl;
 
-                //cout<<"[test]dataline:"<<dataline<<endl;
 
-                size_t pos=0;
+            size_t pos=0;
+            vector<string> data;
+            if((pos=dataline.find(':'))!=string::npos)
+            {
+                dataline.erase(0,pos+1);
+                string_split(dataline,data,",");
+            }
 
-                vector<string> data;
-                if((pos=dataline.find(':'))!=string::npos)
-                {
-                    dataline.erase(0,pos+1);
-                    //cout<<"[test]new dataline:"<<dataline<<endl;
+            cout<<"[test]"<<data[0]<<" "<<data[1]<<" "<<data[2]<<endl;
+            target_reaction_position=cVector3d(stod(data[0]),stod(data[1]),stod(data[2]));
 
-                    String_tools::string_split(dataline,data,",");
-
-                }
-
-                //cout<<"[test]"<<data[0]<<" "<<data[1]<<" "<<data[2]<<endl;
-                target_reaction_position=Eigen::Vector3d(stod(data[0]),stod(data[1]),stod(data[2]));
-
-                //render data
-            }catch (exception e){cerr<<"parse error: "<<e.what()<<endl;}
+            //render data
+//            }catch (exception e){cerr<<"parse error: "<<e.what()<<endl;}
             //now we just parse the data for the haptic demo
-
+//
         }
-        this_thread::yield();
-        this_thread::sleep_for(chrono::milliseconds(1));
     }
 }
 
 
 void send_modelPara(Udp_client& local_env_client,bool& simulationRunning){
-    cout<<"starting msg generator thread..."<<endl;
+    cout<<"starting send_modelPara thread..."<<endl;
 
     //in this thread we take out the msg from the server
     //and send the info (received or calculated force) to the device
